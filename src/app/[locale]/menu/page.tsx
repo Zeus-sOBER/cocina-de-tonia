@@ -1,25 +1,20 @@
-import { useTranslations } from "next-intl";
-import { UtensilsCrossed } from "lucide-react";
+import { getMenuItems } from "@/lib/actions/menu";
+import { getCategories } from "@/lib/actions/categories";
+import { getIngredients } from "@/lib/actions/ingredients";
+import { MenuPageClient } from "./menu-page-client";
 
-export default function MenuPage() {
-  const t = useTranslations("menu");
+export default async function MenuPage() {
+  const [menuItems, categories, ingredients] = await Promise.all([
+    getMenuItems(),
+    getCategories(),
+    getIngredients(),
+  ]);
 
   return (
-    <div className="px-4 py-4 space-y-4">
-      <button
-        className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl
-                   bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold
-                   touch-target-lg"
-      >
-        <UtensilsCrossed size={20} />
-        {t("addItem")}
-      </button>
-
-      {/* Empty state */}
-      <div className="flex flex-col items-center justify-center py-16">
-        <UtensilsCrossed size={48} className="text-[var(--muted-foreground)] mb-3" />
-        <p className="text-[var(--muted-foreground)]">{t("noItems")}</p>
-      </div>
-    </div>
+    <MenuPageClient
+      initialItems={menuItems}
+      categories={categories}
+      ingredients={ingredients}
+    />
   );
 }
