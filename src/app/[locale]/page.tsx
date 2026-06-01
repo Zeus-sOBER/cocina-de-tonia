@@ -1,8 +1,11 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { DailyMenuPreview } from "@/components/dashboard/daily-menu-preview";
 import { RecentOrders } from "@/components/dashboard/recent-orders";
 import { AlertsPanel } from "@/components/dashboard/alerts-panel";
+import { getTodaysStats, getTodaysOrders } from "@/lib/actions/orders";
+import { getTodaysMenu } from "@/lib/actions/daily-menu";
+import { formatCurrency } from "@/lib/utils/format";
 import {
   ClipboardList,
   DollarSign,
@@ -10,16 +13,16 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
-export default function DashboardPage() {
-  const t = useTranslations("dashboard");
+export default async function DashboardPage() {
+  const t = await getTranslations("dashboard");
 
-  // Phase 1: placeholder data — will be replaced with real DB queries in Phase 3
-  const stats = {
-    todaysOrders: 0,
-    revenue: 0,
-    ordersReady: 0,
-    alerts: 0,
-  };
+  const [stats, orders, dailyMenu] = await Promise.all([
+    getTodaysStats(),
+    getTodaysOrders(),
+    getTodaysMenu(),
+  ]);
+
+  const recentOrders = orders.slice(0, 5);
 
   return (
     <div className="px-4 py-4 space-y-6">
@@ -37,35 +40,35 @@ export default function DashboardPage() {
       <div className="grid grid-cols-2 gap-3">
         <StatCard
           label={t("todaysOrders")}
-          value={stats.todaysOrders}
+          value={stats.totalOrders}
           icon={ClipboardList}
           color="blue"
         />
         <StatCard
           label={t("revenue")}
-          value={`$${stats.revenue}`}
+          value={formatCurrency(stats.totalRevenue)}
           icon={DollarSign}
           color="green"
         />
         <StatCard
           label={t("ordersReady")}
-          value={stats.ordersReady}
+          value={stats.readyCount}
           icon={CheckCircle2}
           color="orange"
         />
         <StatCard
           label={t("alerts")}
-          value={stats.alerts}
+          value={0}
           icon={AlertTriangle}
           color="red"
         />
       </div>
 
       {/* Today's menu preview */}
-      <DailyMenuPreview />
+      <DailyMenuPreview dailyMenu={dailyMenu} />
 
       {/* Recent orders */}
-      <RecentOrders />
+      <RecentOrders orders={recentOrders} />
 
       {/* Low stock alerts */}
       <AlertsPanel />
