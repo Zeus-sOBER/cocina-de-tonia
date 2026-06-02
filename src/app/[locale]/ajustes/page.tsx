@@ -30,7 +30,7 @@ export default function SettingsPage() {
             <span className="text-2xl">🍳</span>
           </div>
           <div>
-            <p className="font-medium">Cocina de Mama</p>
+            <p className="font-medium">Cocina de Tonia</p>
             <p className="text-sm text-[var(--muted-foreground)]">v0.1.0</p>
           </div>
         </div>

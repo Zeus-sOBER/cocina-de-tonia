@@ -1,4 +1,4 @@
-# Cocina de Mama
+# Cocina de Tonia
 
 Bilingual (Spanish/English) PWA for managing a small catering business with two modes:
 - **Daily Sales:** Mom picks 2-3 dishes, announces via Facebook/WhatsApp, collects pre-orders + walk-up sales at a factory. 50+ orders/day.

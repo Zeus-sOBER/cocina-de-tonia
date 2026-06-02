@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Modal } from "@/components/shared/modal";
 import { FormField, Input, Select, Textarea, Button } from "@/components/shared/form-field";
 import { IngredientPicker } from "./ingredient-picker";
+import { ImageUpload } from "./image-upload";
 import { createMenuItem, updateMenuItem, type MenuItemFormData } from "@/lib/actions/menu";
 import type { MenuItemWithCategory } from "@/lib/actions/menu";
 import type { Category, Ingredient } from "@/lib/supabase/types";
@@ -33,6 +34,7 @@ export function MenuItemForm({ open, onClose, editItem, categories, ingredients 
   const [price, setPrice] = useState(editItem?.price?.toString() ?? "");
   const [costEstimate, setCostEstimate] = useState(editItem?.cost_estimate?.toString() ?? "");
   const [categoryId, setCategoryId] = useState(editItem?.category_id ?? "");
+  const [imageUrl, setImageUrl] = useState<string | null>(editItem?.image_url ?? null);
   const [recipeIngredients, setRecipeIngredients] = useState<RecipeIngredient[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -54,6 +56,7 @@ export function MenuItemForm({ open, onClose, editItem, categories, ingredients 
       price: parseFloat(price),
       cost_estimate: costEstimate ? parseFloat(costEstimate) : undefined,
       category_id: categoryId || undefined,
+      image_url: imageUrl || undefined,
       ingredients: recipeIngredients.length > 0 ? recipeIngredients : undefined,
     };
 
@@ -86,6 +89,11 @@ export function MenuItemForm({ open, onClose, editItem, categories, ingredients 
       title={isEditing ? t("editItem") : t("addItem")}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Photo */}
+        <ImageUpload
+          currentUrl={editItem?.image_url}
+          onImageChange={(url) => setImageUrl(url)}
+        />
         {/* Name (Spanish - required) */}
         <FormField label={t("nameEs")} id="name_es" required>
           <Input

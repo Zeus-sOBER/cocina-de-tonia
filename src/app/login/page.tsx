@@ -14,15 +14,12 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    // TODO Phase 1: Connect to Supabase auth
-    // For now, just show the form
     try {
-      // const { createClient } = await import("@/lib/supabase/client");
-      // const supabase = createClient();
-      // const { error } = await supabase.auth.signInWithPassword({ email, password });
-      // if (error) throw error;
-      // window.location.href = "/es";
-      setError("Auth not yet configured. Set up Supabase first.");
+      const { createClient } = await import("@/lib/supabase/client");
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      window.location.href = "/es";
     } catch {
       setError("Correo o contrasena incorrectos");
     } finally {
@@ -40,7 +37,7 @@ export default function LoginPage() {
               <span className="text-4xl">🍳</span>
             </div>
             <h1 className="text-2xl font-bold text-[#1E293B] dark:text-[#F1F5F9]">
-              Cocina de Mama
+              Cocina de Tonia
             </h1>
             <p className="text-sm text-[#64748B] mt-1">
               Gestion de pedidos

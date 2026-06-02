@@ -36,6 +36,14 @@ export function MenuItemCard({ item, onEdit }: Props) {
         !item.is_available && "opacity-60"
       )}
     >
+      {/* Image */}
+      {item.image_url && (
+        <div className="w-16 h-16 rounded-xl overflow-hidden bg-[var(--muted)] flex-shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={item.image_url} alt={name} className="w-full h-full object-cover" />
+        </div>
+      )}
+
       {/* Info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">

@@ -64,6 +64,7 @@ export type MenuItemFormData = {
   price: number;
   cost_estimate?: number;
   category_id?: string;
+  image_url?: string;
   is_available?: boolean;
   ingredients?: { ingredient_id: string; quantity: number }[];
 };
@@ -83,6 +84,7 @@ export async function createMenuItem(data: MenuItemFormData) {
       price: itemData.price,
       cost_estimate: itemData.cost_estimate || null,
       category_id: itemData.category_id || null,
+      image_url: itemData.image_url || null,
       is_available: itemData.is_available ?? true,
     })
     .select("id")
@@ -124,6 +126,7 @@ export async function updateMenuItem(id: string, data: MenuItemFormData) {
       price: itemData.price,
       cost_estimate: itemData.cost_estimate || null,
       category_id: itemData.category_id || null,
+      image_url: itemData.image_url || null,
       is_available: itemData.is_available,
     })
     .eq("id", id);
