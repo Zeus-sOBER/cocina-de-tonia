@@ -8,8 +8,13 @@ const intlMiddleware = createIntlMiddleware(routing);
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip auth check for login page and static assets
-  if (pathname === "/login" || pathname.startsWith("/api") || pathname.startsWith("/_next")) {
+  // Skip auth check for public pages, login, and static assets
+  if (
+    pathname === "/login" ||
+    pathname.startsWith("/hoy") ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next")
+  ) {
     return NextResponse.next();
   }
 
