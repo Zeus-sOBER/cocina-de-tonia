@@ -1,24 +1,11 @@
-import { useTranslations } from "next-intl";
-import { CalendarHeart } from "lucide-react";
+import { getEvents } from "@/lib/actions/events";
+import { getCustomers } from "@/lib/actions/customers";
+import { EventsPageClient } from "./events-page-client";
 
-export default function EventsPage() {
-  const t = useTranslations("events");
-
-  return (
-    <div className="px-4 py-4 space-y-4">
-      <button
-        className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl
-                   bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold
-                   touch-target-lg"
-      >
-        <CalendarHeart size={20} />
-        {t("newEvent")}
-      </button>
-
-      <div className="flex flex-col items-center justify-center py-16">
-        <CalendarHeart size={48} className="text-[var(--muted-foreground)] mb-3" />
-        <p className="text-[var(--muted-foreground)]">{t("noEvents")}</p>
-      </div>
-    </div>
-  );
+export default async function EventsPage() {
+  const [events, customers] = await Promise.all([
+    getEvents(),
+    getCustomers(),
+  ]);
+  return <EventsPageClient initialEvents={events} customers={customers} />;
 }
