@@ -32,6 +32,7 @@ export function Header() {
       preparacion: t("prep"),
       reportes: t("reports"),
       ajustes: t("settings"),
+      asistente: t("assistant"),
     };
     return titleMap[segment] || t("dashboard");
   }

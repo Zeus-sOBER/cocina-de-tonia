@@ -36,6 +36,8 @@
     "events": "Eventos",
     "inventory": "Inventario",
     "shopping": "Compras",
+    "assistant": "Asistente",
+    "scanReceipt": "Escanear Ticket",
     "customers": "Clientes",
     "prep": "Preparacion",
     "reports": "Reportes",
@@ -253,5 +255,45 @@
     "systemMode": "Sistema",
     "account": "Cuenta",
     "about": "Acerca de"
+  },
+  "receipt": {
+    "title": "Escanear Ticket",
+    "scan": "Escanear",
+    "takePhoto": "Tomar o seleccionar foto del ticket",
+    "selectPhoto": "Seleccionar Foto",
+    "scanning": "Leyendo ticket...",
+    "scanError": "No se pudo leer el ticket. Intenta con otra foto.",
+    "retry": "Reintentar",
+    "review": "Revisar Compra",
+    "storeName": "Tienda",
+    "receiptDate": "Fecha",
+    "receiptTotal": "Total del ticket",
+    "yourTotal": "Tu total",
+    "itemName": "Articulo",
+    "matchIngredient": "Vincular ingrediente",
+    "createNew": "Crear nuevo",
+    "noMatch": "Sin coincidencia",
+    "exclude": "Excluir",
+    "confirm": "Confirmar Compra",
+    "confirming": "Guardando...",
+    "success": "Compra registrada!",
+    "itemsUpdated": "{count} ingredientes actualizados",
+    "newCreated": "{count} nuevos creados",
+    "scanAnother": "Escanear Otro",
+    "viewInventory": "Ver Inventario"
+  },
+  "assistant": {
+    "title": "Asistente",
+    "placeholder": "Preguntale algo a tu asistente...",
+    "send": "Enviar",
+    "thinking": "Pensando...",
+    "welcome": "Hola Tonia! Preguntame lo que quieras sobre tu negocio. Por ejemplo: pedidos de hoy, gastos de la semana, ingredientes con stock bajo...",
+    "error": "No pude responder. Intenta de nuevo.",
+    "suggestions": {
+      "todayOrders": "Cuantos pedidos hay hoy?",
+      "lowStock": "Que ingredientes estan bajos?",
+      "weekSpending": "Cuanto gaste esta semana?",
+      "topDish": "Cual es mi platillo mas vendido?"
+    }
   }
 }

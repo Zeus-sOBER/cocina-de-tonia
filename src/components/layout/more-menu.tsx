@@ -12,10 +12,12 @@ import {
   Settings,
   X,
   BookOpen,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 
 const menuItems = [
+  { key: "assistant", href: "/asistente", icon: MessageCircle },
   { key: "dailyMenu", href: "/menu-del-dia", icon: BookOpen },
   { key: "menu", href: "/menu", icon: UtensilsCrossed },
   { key: "events", href: "/eventos", icon: CalendarHeart },

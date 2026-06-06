@@ -36,6 +36,8 @@
     "events": "Events",
     "inventory": "Inventory",
     "shopping": "Shopping",
+    "assistant": "Assistant",
+    "scanReceipt": "Scan Receipt",
     "customers": "Customers",
     "prep": "Prep",
     "reports": "Reports",
@@ -253,5 +255,45 @@
     "systemMode": "System",
     "account": "Account",
     "about": "About"
+  },
+  "receipt": {
+    "title": "Scan Receipt",
+    "scan": "Scan",
+    "takePhoto": "Take or select a photo of your receipt",
+    "selectPhoto": "Select Photo",
+    "scanning": "Reading receipt...",
+    "scanError": "Could not read the receipt. Try another photo.",
+    "retry": "Retry",
+    "review": "Review Purchase",
+    "storeName": "Store",
+    "receiptDate": "Date",
+    "receiptTotal": "Receipt total",
+    "yourTotal": "Your total",
+    "itemName": "Item",
+    "matchIngredient": "Match ingredient",
+    "createNew": "Create new",
+    "noMatch": "No match",
+    "exclude": "Exclude",
+    "confirm": "Confirm Purchase",
+    "confirming": "Saving...",
+    "success": "Purchase recorded!",
+    "itemsUpdated": "{count} ingredients updated",
+    "newCreated": "{count} new created",
+    "scanAnother": "Scan Another",
+    "viewInventory": "View Inventory"
+  },
+  "assistant": {
+    "title": "Assistant",
+    "placeholder": "Ask your assistant something...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "welcome": "Hi Tonia! Ask me anything about your business. For example: today's orders, weekly spending, low stock items...",
+    "error": "Could not respond. Please try again.",
+    "suggestions": {
+      "todayOrders": "How many orders today?",
+      "lowStock": "Which ingredients are low?",
+      "weekSpending": "How much did I spend this week?",
+      "topDish": "What's my best seller?"
+    }
   }
 }

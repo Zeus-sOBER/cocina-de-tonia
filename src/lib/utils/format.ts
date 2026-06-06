@@ -1,10 +1,10 @@
 /**
- * Format a number as currency (MXN by default)
+ * Format a number as currency (USD by default — business is in Texas)
  */
 export function formatCurrency(
   amount: number,
-  locale: string = "es-MX",
-  currency: string = "MXN"
+  locale: string = "en-US",
+  currency: string = "USD"
 ): string {
   return new Intl.NumberFormat(locale, {
     style: "currency",
