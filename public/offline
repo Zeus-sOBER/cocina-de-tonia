@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sin Conexion - Cocina de Tonia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #FFF7ED;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0F172A; color: #F1F5F9; }
+      .card { background: #1E293B; border-color: #334155; }
+    }
+    .card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      max-width: 360px;
+    }
+    .icon { font-size: 3rem; margin-bottom: 1rem; }
+    h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    p { font-size: 0.95rem; color: #64748B; margin-bottom: 1.5rem; }
+    button {
+      background: #EA580C; color: white; border: none;
+      padding: 0.875rem 2rem; border-radius: 0.75rem;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      min-height: 48px;
+    }
+    button:active { opacity: 0.9; transform: scale(0.98); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">📡</div>
+    <h1>Sin Conexion</h1>
+    <p>No tienes conexion a internet. Revisa tu wifi o datos moviles e intenta de nuevo.</p>
+    <button onclick="location.reload()">Reintentar</button>
+  </div>
+</body>
+</html>

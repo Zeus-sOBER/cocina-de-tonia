@@ -98,3 +98,35 @@ body {
   font-weight: 600;
   line-height: 1.2;
 }
+
+/* Base font size for mobile readability */
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+}
+
+/* Focus visible for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Selection color */
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Prevent text selection on buttons/nav */
+button, [role="button"], nav {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Loading spinner */
+.border-3 {
+  border-width: 3px;
+}

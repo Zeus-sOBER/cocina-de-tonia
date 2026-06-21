@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: "Cocina de Tonia",
   description: "Gestion de pedidos de catering / Catering order management",
   manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icons/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
