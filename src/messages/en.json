@@ -289,6 +289,9 @@
     "thinking": "Thinking...",
     "welcome": "Hi Tonia! Ask me anything about your business. For example: today's orders, weekly spending, low stock items...",
     "error": "Could not respond. Please try again.",
+    "listening": "Listening...",
+    "listen": "Listen to response",
+    "voiceHint": "Tap the mic to speak",
     "suggestions": {
       "todayOrders": "How many orders today?",
       "lowStock": "Which ingredients are low?",

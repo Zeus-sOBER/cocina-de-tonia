@@ -289,6 +289,9 @@
     "thinking": "Pensando...",
     "welcome": "Hola Tonia! Preguntame lo que quieras sobre tu negocio. Por ejemplo: pedidos de hoy, gastos de la semana, ingredientes con stock bajo...",
     "error": "No pude responder. Intenta de nuevo.",
+    "listening": "Escuchando...",
+    "listen": "Escuchar respuesta",
+    "voiceHint": "Toca el microfono para hablar",
     "suggestions": {
       "todayOrders": "Cuantos pedidos hay hoy?",
       "lowStock": "Que ingredientes estan bajos?",
