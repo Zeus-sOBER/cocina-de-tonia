@@ -5,22 +5,20 @@ import { routing } from "@/lib/i18n/routing";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
+const PUBLIC_PATHS = ["/login", "/hoy", "/api", "/_next", "/icons", "/manifest.json", "/sw.js", "/offline"];
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip auth check for public pages, login, and static assets
-  if (
-    pathname === "/login" ||
-    pathname.startsWith("/hoy") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/_next")
-  ) {
+  // Skip auth for public paths and static assets
+  if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) {
     return NextResponse.next();
   }
 
-  // Create a response to pass to Supabase (for cookie refresh)
-  let response = intlMiddleware(request);
+  // Run i18n middleware first
+  const response = intlMiddleware(request);
 
+  // Use getSession (reads cookie only, no network call) for fast auth check
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -39,17 +37,16 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  // Refresh the session
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { session } } = await supabase.auth.getSession();
 
-  // If no user and not on login page, redirect to login
-  if (!user && !pathname.startsWith("/login")) {
+  // No session → redirect to login
+  if (!session && !pathname.startsWith("/login")) {
     const loginUrl = new URL("/login", request.url);
     return NextResponse.redirect(loginUrl);
   }
 
-  // If user is logged in and on login page, redirect to dashboard
-  if (user && pathname === "/login") {
+  // Logged in on login page → redirect to dashboard
+  if (session && pathname === "/login") {
     const dashboardUrl = new URL("/es", request.url);
     return NextResponse.redirect(dashboardUrl);
   }
@@ -58,5 +55,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|icons|manifest.json|.*\\..*).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|icons|manifest\\.json|sw\\.js|offline|.*\\..+).*)"],
 };
